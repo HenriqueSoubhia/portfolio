@@ -1,21 +1,26 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
+import { Inter } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Henrique Soubhia",
-  description: "Desenvolvedor Fullstack com experiência em React, Node.js, HTML, CSS, JavaScript, Python, Express.js, Firebase e MongoDB. Apaixonado por criar soluções inovadoras com foco em UX/UI e APIs.",
+  description: "Portfolio of Henrique Soubhia",
 };
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
-    <html lang="pt-br">
-      <body>{children}</body>
+    <html lang="en" className="h-full antialiased">
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

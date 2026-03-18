@@ -1,23 +1,17 @@
-import Banner from "@/components/Sections/Banner";
-import Header from "../components/Header";
-import Sobre from "@/components/Sections/Sobre";
-import Projetos from "@/components/Sections/Projetos";
-import Footer from "@/components/Footer";
-import Contato from "@/components/Sections/Contato";
+import AboutSection from "@/components/about-section";
+import Banner from "@/components/banner";
+import BlankSection from "@/components/blank-section";
+import Navbar from "@/components/navbar";
 
 export default function Home() {
-
   return (
     <>
-      <Header />
-      <main className="pt-12 md:pt-20">
-        <Banner/>
-        <Sobre />
-        <Projetos/>
-        <Contato/>
+      <Navbar />
+      <main>
+        <Banner />
+        <AboutSection />
+        <BlankSection />
       </main>
-
-      <Footer/>
     </>
   );
 }
