@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+  --bg-color: #ea580c; /* Default cor de fallback */
+}
+
+@theme inline {
+  --color-background: var(--bg-color);
+  --font-sans: var(--font-jakarta);
+  --font-heading: var(--font-outfit);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: #ffffff;
+  transition: background-color 2s ease;
+}
