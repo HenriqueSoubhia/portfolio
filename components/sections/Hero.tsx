@@ -16,7 +16,7 @@ export function Hero() {
           </span>
           <h2 className="text-5xl sm:text-7xl md:text-8xl font-bold font-experimental text-white tracking-tighter leading-[0.9]">
             Desenvolvedor<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-white to-white/30 italic">
+            <span className="text-transparent bg-clip-text bg-linear-to-br from-white to-white/30 italic">
               Frontend.
             </span>
           </h2>
@@ -47,6 +47,17 @@ export function Hero() {
           <span className="block" aria-hidden="true">Soubhia</span>
         </h1>
       </div>
+
+      <a
+        href="#sobre"
+        className="absolute bottom-8 left-6 sm:left-12 md:left-20 flex items-center gap-3 text-white/50 hover:text-white transition-colors group"
+        aria-label="Rolar para Sobre Mim"
+      >
+        <span className="text-xs tracking-[0.3em] uppercase font-mono">Scroll</span>
+        <div className="w-px h-8 bg-white/30 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-[50%]"></div>
+        </div>
+      </a>
     </section>
   );
 }
