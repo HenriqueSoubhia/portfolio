@@ -8,6 +8,7 @@
   --color-background: var(--bg-color);
   --font-sans: var(--font-jakarta);
   --font-heading: var(--font-outfit);
+  --font-experimental: var(--font-syne);
 }
 
 body {

@@ -1,22 +1,34 @@
 import { LocalTime } from "@/components/ui/LocalTime";
+import { ArrowDownRight, Sparkles } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative w-full h-dvh min-h-[600px] flex items-center overflow-hidden px-6 sm:px-12 md:px-20 container mx-auto">
+    <section className="relative w-full h-dvh min-h-[600px] flex items-center overflow-hidden px-6 sm:px-12 md:px-20 container mx-auto pt-16">
 
       <div className="relative z-10 flex flex-col items-start w-full max-w-3xl mt-12 sm:mt-0">
 
         <LocalTime />
 
-        <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold font-heading text-white tracking-tight mb-6 leading-tight flex flex-col">
-          Desenvolvedor
-          <span className="text-white/60">Frontend.</span>
-        </h2>
+        <div className="flex flex-col gap-2 mb-8 relative">
+          <span className="text-xs sm:text-sm text-white/40 tracking-[0.4em] font-sans font-medium uppercase flex items-center gap-2">
+            フロントエンド開発者
+            <Sparkles className="w-3 h-3 opacity-50" />
+          </span>
+          <h2 className="text-5xl sm:text-7xl md:text-8xl font-bold font-experimental text-white tracking-tighter leading-[0.9]">
+            Desenvolvedor<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-white to-white/30 italic">
+              Frontend.
+            </span>
+          </h2>
+        </div>
 
-        <p className="text-lg sm:text-lg text-white/70 max-w-sm sm:max-w-md font-light leading-relaxed">
-          Criando interfaces fluidas, interativas e focadas na experiência do usuário.
-          Desenhando soluções digitais que se adaptam perfeitamente.
-        </p>
+        <div className="flex items-start gap-4">
+          <ArrowDownRight className="w-8 h-8 text-white/50 shrink-0 mt-1" strokeWidth={1} />
+          <p className="text-lg sm:text-xl text-white/70 max-w-sm sm:max-w-md font-light leading-relaxed">
+            Criando interfaces fluidas, interativas e focadas na experiência do usuário.
+            Desenhando soluções digitais que se adaptam perfeitamente.
+          </p>
+        </div>
 
       </div>
 

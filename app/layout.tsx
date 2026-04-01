@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
+import { Outfit, Plus_Jakarta_Sans, Syne } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { Navbar } from "@/components/ui/Navbar";
@@ -27,6 +27,11 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
+const syne = Syne({
+  variable: "--font-syne",
+  subsets: ["latin"],
+});
+
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
@@ -45,7 +50,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${jakarta.variable} ${outfit.variable} h-full antialiased`}
+      className={`${jakarta.variable} ${outfit.variable} ${syne.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
