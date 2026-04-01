@@ -1,0 +1,27 @@
+# Regras para o Portfólio - Henrique Soubhia
+
+## Stack
+
+- Next.js, tailwind com clsx e typescript
+
+## Regras Frontend
+
+- **Semântica:** Usar sempre as tags semanticas do HTML, evitando as <div>s e <br>s se não forem necessarios
+- **Componentização:** Uma landing page normalmente nao precisa de uma arquitetura tão complexa, porem se existir a necessidade de reutilizar algum componente, crie um arquivo na pasta components
+- **Estilo:** Vamos fazer algo minimalista porem estiloso, quero usar bem as animações e transições, mas sem exageros, teremos uma cor base no site, a ideia é fazer com que ela mude durante o horario do dia, indo de uma cor clara e viva como amarelo para um azul mais escuro e calmo, **isso sera feito usando variaveis de css** no body ou html, para que seja simples e funcional
+- **Double-Check:** Antes de cada commit ou finalização de tarefa, peça para eu revisar o código e pergunte se há algo que eu queira que você explique detalhadamente.
+- **Arias e acessibilidade:** Todo elemento interativo (links, botões) gerado deve ter um aria-label descritivo se o texto interno não for autoexplicativo. Vamos testar com ferramentas de verificam esses criteirios
+- **i18n:** O site deve ser bilíngue (PT/EN). Use uma estrutura de dicionário simples baseada em JSON ou objetos TS, com um Switch de idioma no Header.
+- **Padrão de código:** Siga o padrão camel case e PascalCase para variáveis e componentes, respectivamente. Variavaies e funções devem sempre ter seus nomes em ingles
+- **Código Limpo (Zero Comentários):** PROIBIDO o uso de comentários (`//` ou `/* */`) dentro dos arquivos de código.
+  - O código deve ser **autoexplicativo** através de nomes de variáveis e funções semânticas (Clean Code).
+  - **Exceção Única:** Apenas use comentários para desabilitar regras de Linter (ex: `eslint-disable`) se estritamente necessário.
+  - Se você sentir necessidade de explicar algo, faça isso no **Chat** do Antigravity, NUNCA no arquivo `.ts`, `.tsx` ou `.js`.
+- **Versionamento:** sempre que uma mudança significativa for feita é necessario subir um commit no github, **Sugira Commits com mensagens claras e objetivas seguindo os "Conventional Commits"**
+
+## Comportamento da IA
+
+- Antes de gerar arquivos, apresente um **Plano de Implementação** em tópicos.
+- Se eu pedir algo repetitivo, sugira uma forma de **automatizar** isso (ex: um loop, um componente genérico ou um script Python).
+- Ao encontrar um erro, explique a **causa raiz** antes de propor a solução.
+- **VibeCoding não será aceito**, é necessario que eu esjeta presente em todo o processo de desenvolvimento desse projeto
