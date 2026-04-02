@@ -7,17 +7,21 @@ interface SectionDividerProps {
 
 export function SectionDivider({ text, side = "left" }: SectionDividerProps) {
   return (
-    <div className="w-full flex items-center justify-center py-24 sm:py-40">
-      <div className="relative w-full border-t border-white/10">
-        <div
-          className={cn(
-            "absolute top-0 -translate-y-1/2 flex items-center gap-3 bg-white/5 backdrop-blur-md px-5 py-2 border border-white/10 rounded-full text-white/50 text-xs font-mono tracking-[0.3em] uppercase z-20",
-            side === "left" ? "left-6 sm:left-12 md:left-20" : "right-6 sm:right-12 md:right-20"
-          )}
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-white/40 animate-pulse"></span>
-          {text}
-        </div>
+    <div className="w-full relative py-20 sm:py-32 flex items-center">
+      <hr className="w-full border-white/10" aria-hidden="true" />
+      <div
+        className={cn(
+          "absolute flex items-center gap-2.5 bg-white/5 backdrop-blur-md px-4 py-2 border border-white/10 rounded-full text-white/50 text-[10px] sm:text-xs font-mono tracking-[0.3em] uppercase z-20",
+          side === "left"
+            ? "left-6 sm:left-12 md:left-20 flex-row"
+            : "right-6 sm:right-12 md:right-20 flex-row-reverse",
+        )}
+      >
+        <span
+          className="w-1.5 h-1.5 rounded-full bg-white/40 animate-pulse shrink-0"
+          aria-hidden="true"
+        />
+        <span className="leading-none mt-px">{text}</span>
       </div>
     </div>
   );
