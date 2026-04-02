@@ -1,5 +1,7 @@
+"use client";
+
 import { LocalTime } from "@/components/ui/LocalTime";
-import { ArrowDownRight, Sparkles } from "lucide-react";
+import { ArrowDownRightIcon, SparkleIcon } from "@phosphor-icons/react";
 
 export function Hero() {
   return (
@@ -13,7 +15,7 @@ export function Hero() {
         <div className="flex flex-col gap-2 mb-8 relative">
           <span className="text-xs sm:text-sm text-white/40 tracking-[0.4em] font-sans font-medium uppercase flex items-center gap-2">
             フロントエンド開発者
-            <Sparkles className="w-3 h-3 opacity-50" />
+            <SparkleIcon className="w-3 h-3 opacity-50" weight="fill" />
           </span>
           <h2 className="text-5xl sm:text-7xl md:text-8xl font-bold font-experimental text-white tracking-tighter leading-[0.9]">
             Desenvolvedor
@@ -24,7 +26,7 @@ export function Hero() {
         </div>
 
         <div className="flex items-start gap-4">
-          <ArrowDownRight
+          <ArrowDownRightIcon
             className="w-8 h-8 text-white/50 shrink-0 mt-1"
             strokeWidth={1}
           />
@@ -36,7 +38,7 @@ export function Hero() {
       </div>
 
       <h1
-        className="absolute right-0 sm:right-4 md:right-8 h-full flex flex-col items-center justify-center p-2 sm:p-4 pointer-events-none font-bold font-heading gap-2 sm:gap-4 uppercase tracking-tighter text-white opacity-30 select-none mix-blend-overlay md:opacity-90"
+        className="absolute right-0 sm:right-4 md:right-8 h-full flex flex-col items-center p-2 sm:p-4 pointer-events-none font-bold font-heading gap-2 sm:gap-4 uppercase tracking-tighter text-white opacity-30 select-none mix-blend-overlay md:opacity-90"
         style={{
           writingMode: "vertical-rl",
           transform: "rotate(180deg)",

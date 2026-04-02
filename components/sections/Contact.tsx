@@ -1,4 +1,10 @@
-import { Mail, ArrowUpRight } from "lucide-react";
+"use client";
+
+import {
+  GithubLogoIcon,
+  LinkedinLogoIcon,
+  ArrowUpRightIcon,
+} from "@phosphor-icons/react";
 
 export function Contact() {
   return (
@@ -29,7 +35,7 @@ export function Contact() {
           >
             Mandar Olá
             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center -rotate-45 group-hover:rotate-0 transition-transform duration-500 overflow-hidden">
-              <ArrowUpRight className="w-6 h-6 text-black" />
+              <ArrowUpRightIcon className="w-6 h-6 text-black" />
             </div>
           </a>
         </div>
@@ -43,12 +49,12 @@ export function Contact() {
               {
                 name: "LinkedIn",
                 href: "https://linkedin.com",
-                icon: <Mail className="w-4 h-4" />,
+                icon: <LinkedinLogoIcon className="w-4 h-4" />,
               },
               {
                 name: "GitHub",
                 href: "https://github.com",
-                icon: <Mail className="w-4 h-4" />,
+                icon: <GithubLogoIcon className="w-4 h-4" />,
               },
             ].map((social) => (
               <a
