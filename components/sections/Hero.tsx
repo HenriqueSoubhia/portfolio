@@ -38,7 +38,7 @@ export function Hero() {
       </div>
 
       <h1
-        className="absolute right-0 sm:right-4 md:right-8 h-full flex flex-col items-center p-2 sm:p-4 pointer-events-none font-bold font-heading gap-2 sm:gap-4 uppercase tracking-tighter text-white opacity-30 select-none mix-blend-overlay md:opacity-90"
+        className="absolute right-0 sm:right-4 md:right-8 h-full flex flex-col items-start  pt-16 pointer-events-none font-bold font-heading gap-2 sm:gap-4 uppercase tracking-tighter text-white opacity-10 select-none mix-blend-overlay md:opacity-90"
         style={{
           writingMode: "vertical-rl",
           transform: "rotate(180deg)",
