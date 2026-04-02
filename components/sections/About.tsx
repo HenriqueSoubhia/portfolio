@@ -2,14 +2,14 @@ export function About() {
   return (
     <section
       id="about"
-      className="relative w-full min-h-dvh flex items-center bg-transparent py-24 sm:py-32 px-6 sm:px-12 md:px-20 container mx-auto"
+      className="relative w-full min-h-dvh flex items-center bg-transparent py-24 sm:py-32 px-6 sm:px-12 md:px-20 max-w-[1600px] mx-auto"
     >
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 sm:gap-20 w-full items-start">
         <header className="md:col-span-4 flex flex-col items-start md:sticky md:top-40">
           <span className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] mb-4">
             01. PROFILE
           </span>
-          <h2 className="text-6xl sm:text-7xl md:text-8xl font-bold font-experimental text-white tracking-tighter uppercase leading-[0.9]">
+          <h2 className="text-[clamp(3.5rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.9]">
             Sobre
             <span className="block">Mim.</span>
           </h2>
@@ -27,14 +27,14 @@ export function About() {
           </div>
 
           <article className="flex flex-col gap-6">
-            <p className="text-lg sm:text-xl text-white/80 font-light leading-relaxed max-w-2xl">
+            <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 font-light leading-relaxed max-w-2xl">
               Sou apaixonado por converter problemas complexos em soluções
               visuais minimalistas e altamente eficientes. Meu foco é o
               desenvolvimento Front-end, onde acredito que a estética aliada à
               performance dita o sucesso da experiência do usuário moderno.
             </p>
 
-            <p className="text-lg sm:text-xl text-white/80 font-light leading-relaxed max-w-2xl">
+            <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 font-light leading-relaxed max-w-2xl">
               Atualmente atuo como Desenvolvedor Web na <strong>FIAP</strong>,
               uma das instituições de tecnologia e inovação mais renomadas,
               local onde desempenho um papel tático no ambiente imersivo,

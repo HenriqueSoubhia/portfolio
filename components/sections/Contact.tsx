@@ -10,14 +10,14 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="relative w-full overflow-hidden flex flex-col pt-24 sm:pt-32 px-6 sm:px-12 md:px-20 container mx-auto pb-12"
+      className="relative w-full overflow-hidden flex flex-col pt-24 sm:pt-32 px-6 sm:px-12 md:px-20 max-w-[1600px] mx-auto pb-12"
     >
       <header className="flex flex-col gap-8 mb-20 lg:mb-32">
         <div className="flex flex-col gap-2">
           <span className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] uppercase">
             03. PRÓXIMOS PASSOS
           </span>
-          <h2 className="text-6xl sm:text-7xl md:text-[8rem] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.85]">
+          <h2 className="text-[clamp(3.5rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.85]">
             VAMOS <span className="block">CONVERSAR.</span>
           </h2>
         </div>
@@ -25,13 +25,13 @@ export function Contact() {
 
       <div className="flex flex-col md:flex-row justify-between items-end gap-16 mb-32">
         <div className="flex flex-col gap-6 max-w-xl">
-          <p className="text-2xl sm:text-3xl text-white font-light font-heading leading-tight tracking-tight">
+          <p className="text-[clamp(1.25rem,3vw,1.875rem)] text-white font-light font-heading leading-tight tracking-tight">
             Tenha um projeto em mente ou apenas queira bater um papo sobre
             tecnologia? Adoraria ouvir de você.
           </p>
           <a
             href="mailto:contato@henriquesoubhia.com"
-            className="group flex items-center gap-4 text-4xl sm:text-5xl font-experimental font-bold text-white hover:opacity-70 transition-all duration-300 w-fit"
+            className="group flex items-center gap-4 text-[clamp(1.75rem,5vw,3rem)] font-experimental font-bold text-white hover:opacity-70 transition-all duration-300 w-fit"
           >
             Mandar Olá
             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center -rotate-45 group-hover:rotate-0 transition-transform duration-500 overflow-hidden">

@@ -53,14 +53,14 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="relative w-full min-h-dvh flex flex-col py-24 sm:py-32 px-6 sm:px-12 md:px-20 container mx-auto"
+      className="relative w-full min-h-dvh flex flex-col py-24 sm:py-32 px-6 sm:px-12 md:px-20 max-w-[1600px] mx-auto"
     >
       <header className="flex flex-col gap-8 mb-20 lg:mb-32">
         <div className="flex flex-col gap-2">
           <span className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] uppercase">
             02. SELECTED WORK
           </span>
-          <h2 className="text-6xl sm:text-7xl md:text-8xl font-bold font-experimental text-white tracking-tighter uppercase leading-[0.9]">
+          <h2 className="text-[clamp(3.5rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.9]">
             Projetos.
           </h2>
         </div>

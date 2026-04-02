@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans, Syne } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
-import { ThemeDebugger } from "@/components/ui/ThemeDebugger";
+// import { ThemeDebugger } from "@/components/ui/ThemeDebugger";
 import { Navbar } from "@/components/ui/Navbar";
 
 const themeScript = `
@@ -65,7 +65,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider />
-        <ThemeDebugger />
+        {/* <ThemeDebugger /> */}
         <Navbar />
         {children}
       </body>
