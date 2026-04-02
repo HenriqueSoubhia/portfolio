@@ -22,6 +22,4 @@
 ## Comportamento da IA
 
 - Antes de gerar arquivos, apresente um **Plano de Implementação** em tópicos.
-- Se eu pedir algo repetitivo, sugira uma forma de **automatizar** isso (ex: um loop, um componente genérico ou um script Python).
-- Ao encontrar um erro, explique a **causa raiz** antes de propor a solução.
 - **VibeCoding não será aceito**, é necessario que eu esjeta presente em todo o processo de desenvolvimento desse projeto
