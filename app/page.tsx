@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
+import { Projects } from "@/components/sections/Projects";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 
 export default function Home() {
@@ -7,10 +8,13 @@ export default function Home() {
     <main className="relative flex min-h-dvh flex-col w-full">
       <Hero />
 
-      <SectionDivider text="Continue Lendo" side="left" />
+      <SectionDivider text="Continue lendo" side="left" />
 
       <About />
-      <SectionDivider text="Continue Lendo" side="right" />
+
+      <SectionDivider text="tem mais coisa por aqui!" side="right" />
+
+      <Projects />
     </main>
   );
 }
