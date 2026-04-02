@@ -12,7 +12,7 @@ export function LocalTime() {
         now.toLocaleTimeString("pt-BR", {
           hour: "2-digit",
           minute: "2-digit",
-        })
+        }),
       );
     };
 
@@ -33,7 +33,8 @@ export function LocalTime() {
         <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
       </span>
       <span>
-        Local Time <span className="mx-2">—</span> {time}
+        Local Time <span className="mx-2">—</span>{" "}
+        <time dateTime={time}>{time}</time>
       </span>
     </div>
   );
