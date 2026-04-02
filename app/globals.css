@@ -11,6 +11,16 @@
   --font-experimental: var(--font-syne);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   background-color: var(--bg-color);
   color: #ffffff;
