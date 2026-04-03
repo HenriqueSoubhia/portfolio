@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function About() {
   return (
     <section
@@ -45,12 +47,15 @@ export function About() {
 
           <figure className="relative w-full max-w-sm aspect-3/4 overflow-hidden bg-white/5 border border-white/10 mt-4 group">
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white/20 transition-colors group-hover:text-white/40">
-              <span className="font-sans tracking-widest text-xs uppercase mb-2">
-                [ Espaço de Fotografia ]
-              </span>
-              <span className="font-mono text-[0.65rem] opacity-50">
-                750x1000 MAX
-              </span>
+              <Image
+                src="/henrique.png"
+                alt="Henrique Soubhia"
+                width={750}
+                height={1000}
+                loading="eager"
+                priority
+                draggable={false}
+              />
             </div>
 
             <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-white/20"></div>
