@@ -17,7 +17,7 @@ export function Contact() {
           <span className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] uppercase">
             03. PRÓXIMOS PASSOS
           </span>
-          <h2 className="text-[clamp(3.5rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.85]">
+          <h2 className="text-[clamp(2.3rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.85]">
             VAMOS <span className="block">CONVERSAR.</span>
           </h2>
         </div>

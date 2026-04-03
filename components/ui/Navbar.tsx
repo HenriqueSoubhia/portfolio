@@ -34,7 +34,6 @@ export function Navbar() {
           </Link>
 
           <div className="flex items-center gap-6 sm:gap-10">
-            {/* Desktop nav */}
             <ul className="hidden md:flex items-center gap-8 text-xs font-semibold tracking-[0.2em] uppercase text-white/70">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
@@ -73,7 +72,6 @@ export function Navbar() {
               </span>
             </button>
 
-            {/* Mobile hamburger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 cursor-pointer"
@@ -97,7 +95,6 @@ export function Navbar() {
         </nav>
       </header>
 
-      {/* Mobile overlay */}
       <div
         className={cn(
           "fixed inset-0 z-40 md:hidden transition-all duration-500",

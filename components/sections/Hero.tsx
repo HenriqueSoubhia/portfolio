@@ -18,7 +18,7 @@ export function Hero() {
               フロントエンド開発者
               <SparkleIcon className="w-3 h-3 opacity-50" weight="fill" />
             </span>
-            <h2 className="text-[clamp(3rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter leading-[0.85] text-balance">
+            <h2 className="text-[clamp(2.3rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter leading-[0.85] text-balance">
               Desenvolvedor
               <span className="text-transparent bg-clip-text bg-linear-to-br from-white to-white/30 italic block">
                 Frontend.
@@ -40,11 +40,11 @@ export function Hero() {
         </div>
 
         <h1
-          className="absolute right-0 sm:right-6 md:right-12 h-full flex flex-col items-start pt-24 sm:pt-32 pointer-events-none font-bold font-heading gap-2 sm:gap-4 uppercase tracking-tighter text-white opacity-15 md:opacity-90 select-none mix-blend-overlay"
+          className="absolute right-0 sm:right-6 md:right-12 h-full flex flex-col items-start pt-8 sm:pt-16 pointer-events-none font-bold font-heading gap-2 sm:gap-4 uppercase tracking-tighter text-white opacity-15 md:opacity-90 select-none mix-blend-overlay"
           style={{
             writingMode: "vertical-rl",
             transform: "rotate(180deg)",
-            fontSize: "clamp(2rem, 15dvh, 12rem)",
+            fontSize: "clamp(2rem, 18dvh, 12rem)",
             lineHeight: 0.8,
           }}
           aria-label="Henrique Soubhia"

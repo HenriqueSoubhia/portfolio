@@ -9,7 +9,7 @@ export function About() {
           <span className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] mb-4">
             01. PROFILE
           </span>
-          <h2 className="text-[clamp(3.5rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.9]">
+          <h2 className="text-[clamp(2.3rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.9]">
             Sobre
             <span className="block">Mim.</span>
           </h2>

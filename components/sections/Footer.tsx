@@ -9,17 +9,17 @@ export function Footer() {
             © {currentYear} TODOS OS DIREITOS RESERVADOS
           </p>
           <p className="text-[10px] font-mono text-white/20 tracking-tighter uppercase italic">
-            DESIGNED & DEVELOPED WITH 🖤 BY ME
+            DESIGNED & DEVELOPED BY HENRIQUE SOUBHIA
           </p>
         </div>
 
         <div className="flex items-center gap-6">
-           <a 
-             href="#hero" 
-             className="text-[10px] font-mono text-white/40 hover:text-white uppercase tracking-widest transition-colors"
-           >
-              BACK TO TOP ↑
-           </a>
+          <a
+            href="#hero"
+            className="text-[10px] font-mono text-white/40 hover:text-white uppercase tracking-widest transition-colors"
+          >
+            BACK TO TOP ↑
+          </a>
         </div>
       </div>
     </footer>
