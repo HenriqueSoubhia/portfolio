@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function About() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="about"
@@ -9,11 +14,11 @@ export function About() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 sm:gap-20 w-full items-start">
         <header className="md:col-span-5 flex flex-col items-start md:sticky md:top-40">
           <span className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] mb-4">
-            01. PROFILE
+            {t.about.sectionLabel}
           </span>
           <h2 className="text-[clamp(2.3rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.9]">
-            Sobre
-            <span className="block">Mim.</span>
+            {t.about.title}
+            <span className="block">{t.about.titleSuffix}</span>
           </h2>
         </header>
 
@@ -24,24 +29,16 @@ export function About() {
             </span>
             <span className="text-white/40 font-light">—</span>
             <span className="text-white/80 font-light tracking-wider text-sm sm:text-base">
-              DESENVOLVEDOR WEB
+              {t.about.role}
             </span>
           </div>
 
           <article className="flex flex-col gap-6">
             <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 font-light leading-relaxed max-w-2xl">
-              Sou apaixonado por converter problemas complexos em soluções
-              visuais minimalistas e altamente eficientes. Meu foco é o
-              desenvolvimento Front-end, onde acredito que a estética aliada à
-              performance dita o sucesso da experiência do usuário moderno.
+              {t.about.bio1}
             </p>
-
             <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 font-light leading-relaxed max-w-2xl">
-              Atualmente atuo como Desenvolvedor Web na <strong>FIAP</strong>,
-              uma das instituições de tecnologia e inovação mais renomadas,
-              local onde desempenho um papel tático no ambiente imersivo,
-              lapidando minhas habilidades para entregar ecossistemas
-              sustentáveis através de código limpo.
+              {t.about.bio2}
             </p>
           </article>
 
@@ -49,7 +46,7 @@ export function About() {
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white/20 transition-colors group-hover:text-white/40">
               <Image
                 src="/henrique.png"
-                alt="Henrique Soubhia"
+                alt={t.about.photoAlt}
                 width={750}
                 height={1000}
                 loading="eager"
@@ -57,7 +54,6 @@ export function About() {
                 draggable={false}
               />
             </div>
-
             <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-white/20"></div>
             <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-white/20"></div>
             <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-white/20"></div>

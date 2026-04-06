@@ -1,4 +1,9 @@
+"use client";
+
+import { useLanguage } from "@/contexts/LanguageContext";
+
 export function Footer() {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -6,10 +11,10 @@ export function Footer() {
       <div className="w-full pt-12 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-8">
         <div className="flex flex-col items-center sm:items-start gap-1">
           <p className="text-[10px] font-mono text-white/30 tracking-widest uppercase">
-            © {currentYear} TODOS OS DIREITOS RESERVADOS
+            © {currentYear} {t.footer.rights}
           </p>
           <p className="text-[10px] font-mono text-white/20 tracking-tighter uppercase italic">
-            DESIGNED & DEVELOPED BY HENRIQUE SOUBHIA
+            {t.footer.credit}
           </p>
         </div>
 
@@ -18,7 +23,7 @@ export function Footer() {
             href="#hero"
             className="text-[10px] font-mono text-white/40 hover:text-white uppercase tracking-widest transition-colors"
           >
-            BACK TO TOP ↑
+            {t.footer.backToTop}
           </a>
         </div>
       </div>

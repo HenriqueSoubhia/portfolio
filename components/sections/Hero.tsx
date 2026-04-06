@@ -2,8 +2,11 @@
 
 import { LocalTime } from "@/components/ui/LocalTime";
 import { ArrowDownRightIcon, SparkleIcon } from "@phosphor-icons/react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section
       className="relative w-full h-dvh min-h-[600px] flex items-center overflow-hidden"
@@ -15,13 +18,13 @@ export function Hero() {
 
           <div className="flex flex-col gap-2 mb-8 relative">
             <span className="text-[clamp(0.6rem,2vw,0.875rem)] text-white/40 tracking-[0.4em] font-sans font-medium uppercase flex items-center gap-2">
-              フロントエンド開発者
+              {t.hero.tagline}
               <SparkleIcon className="w-3 h-3 opacity-50" weight="fill" />
             </span>
             <h2 className="text-[clamp(2.3rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter leading-[0.85] text-balance">
-              Desenvolvedor
+              {t.hero.title}
               <span className="text-transparent bg-clip-text bg-linear-to-br from-white to-white/30 italic block">
-                Frontend.
+                {t.hero.titleHighlight}
               </span>
             </h2>
           </div>
@@ -32,9 +35,7 @@ export function Hero() {
               strokeWidth={1}
             />
             <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-sm sm:max-w-md font-light leading-relaxed text-balance">
-              Criando interfaces fluidas, interativas e focadas na experiência
-              do usuário. Desenhando soluções digitais que se adaptam
-              perfeitamente.
+              {t.hero.description}
             </p>
           </div>
         </div>
@@ -60,10 +61,10 @@ export function Hero() {
         <a
           href="#about"
           className="absolute bottom-8 left-6 sm:left-12 md:left-20 flex items-center gap-3 text-white/50 hover:text-white transition-colors group"
-          aria-label="Rolar para Sobre Mim"
+          aria-label={t.hero.scrollAriaLabel}
         >
           <span className="text-xs tracking-[0.3em] uppercase font-mono">
-            Scroll
+            {t.hero.scroll}
           </span>
           <div className="w-px h-8 bg-white/30 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-[50%]"></div>

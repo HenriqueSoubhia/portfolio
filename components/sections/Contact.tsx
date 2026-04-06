@@ -5,8 +5,24 @@ import {
   LinkedinLogoIcon,
   ArrowUpRightIcon,
 } from "@phosphor-icons/react";
+import { useLanguage } from "@/contexts/LanguageContext";
+
+const SOCIALS = [
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com",
+    icon: <LinkedinLogoIcon className="w-4 h-4" />,
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com",
+    icon: <GithubLogoIcon className="w-4 h-4" />,
+  },
+];
 
 export function Contact() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="contact"
@@ -15,10 +31,11 @@ export function Contact() {
       <header className="flex flex-col gap-8 mb-20 lg:mb-32">
         <div className="flex flex-col gap-2">
           <span className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] uppercase">
-            03. PRÓXIMOS PASSOS
+            {t.contact.sectionLabel}
           </span>
           <h2 className="text-[clamp(2.3rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.85]">
-            VAMOS <span className="block">CONVERSAR.</span>
+            {t.contact.title}
+            <span className="block">{t.contact.titleSuffix}</span>
           </h2>
         </div>
       </header>
@@ -26,14 +43,13 @@ export function Contact() {
       <div className="flex flex-col md:flex-row justify-between items-end gap-16 mb-32">
         <div className="flex flex-col gap-6 max-w-xl">
           <p className="text-[clamp(1.25rem,3vw,1.875rem)] text-white font-light font-heading leading-tight tracking-tight">
-            Tenha um projeto em mente ou apenas queira bater um papo sobre
-            tecnologia? Adoraria ouvir de você.
+            {t.contact.description}
           </p>
           <a
             href="mailto:contato@henriquesoubhia.com"
             className="group flex items-center gap-4 text-[clamp(1.75rem,5vw,3rem)] font-experimental font-bold text-white hover:opacity-70 transition-all duration-300 w-fit"
           >
-            Mandar Olá
+            {t.contact.cta}
             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center -rotate-45 group-hover:rotate-0 transition-transform duration-500 overflow-hidden">
               <ArrowUpRightIcon className="w-6 h-6 text-black" />
             </div>
@@ -43,20 +59,9 @@ export function Contact() {
         <div className="flex flex-col gap-4 items-end">
           <div className="flex flex-col gap-3 items-end">
             <span className="text-white/30 font-mono text-[10px] uppercase tracking-widest mb-2">
-              SOCIAIS
+              {t.contact.socials}
             </span>
-            {[
-              {
-                name: "LinkedIn",
-                href: "https://linkedin.com",
-                icon: <LinkedinLogoIcon className="w-4 h-4" />,
-              },
-              {
-                name: "GitHub",
-                href: "https://github.com",
-                icon: <GithubLogoIcon className="w-4 h-4" />,
-              },
-            ].map((social) => (
+            {SOCIALS.map((social) => (
               <a
                 key={social.name}
                 href={social.href}

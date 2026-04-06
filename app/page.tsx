@@ -1,24 +1,29 @@
+"use client";
+
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Projects } from "@/components/sections/Projects";
+import { SectionDivider } from "@/components/ui/SectionDivider";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
-import { SectionDivider } from "@/components/ui/SectionDivider";
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <main className="relative flex min-h-dvh flex-col w-full">
       <Hero />
 
-      <SectionDivider text="Continue lendo" side="left" />
+      <SectionDivider text={t.nav.readMore} side="left" />
 
       <About />
 
-      <SectionDivider text="tem mais coisa por aqui!" side="right" />
+      <SectionDivider text={t.nav.seeWork} side="right" />
 
       <Projects />
 
-      <SectionDivider text="e aí, curtiu?" side="left" />
+      <SectionDivider text={t.nav.contact} side="left" />
 
       <Contact />
 
