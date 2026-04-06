@@ -7,7 +7,7 @@ export function About() {
       className="relative w-full min-h-dvh flex items-center bg-transparent py-24 sm:py-32 px-6 sm:px-12 md:px-20 max-w-[1600px] mx-auto"
     >
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 sm:gap-20 w-full items-start">
-        <header className="md:col-span-4 flex flex-col items-start md:sticky md:top-40">
+        <header className="md:col-span-5 flex flex-col items-start md:sticky md:top-40">
           <span className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] mb-4">
             01. PROFILE
           </span>
@@ -17,7 +17,7 @@ export function About() {
           </h2>
         </header>
 
-        <div className="md:col-span-8 flex flex-col gap-12">
+        <div className="md:col-span-7 flex flex-col gap-12">
           <div className="flex items-center gap-4 border-l-4 border-white pl-5 py-2">
             <span className="text-white font-bold font-heading tracking-widest uppercase text-base sm:text-lg">
               FIAP
