@@ -23,7 +23,7 @@ export default function Home() {
 
       <Projects />
 
-      <SectionDivider text={t.nav.contact} side="left" />
+      <SectionDivider text={t.nav.enterInContact} side="left" />
 
       <Contact />
 
