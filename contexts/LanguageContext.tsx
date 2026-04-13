@@ -2,6 +2,7 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
   useState,
   type ReactNode,
@@ -11,17 +12,35 @@ import { dictionary, type Lang, type Dictionary } from "@/lib/i18n";
 interface LanguageContextValue {
   lang: Lang;
   setLang: (lang: Lang) => void;
+  switchLang: () => void;
+  isTransitioning: boolean;
   t: Dictionary;
 }
+
+const TRANSITION_DURATION = 200; // ms for fade-out (fade-in is handled by motion)
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>("pt");
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const t = dictionary[lang];
 
+  const switchLang = useCallback(() => {
+    setIsTransitioning(true);
+
+    setTimeout(() => {
+      setLang((prev) => (prev === "pt" ? "en" : "pt"));
+
+      // Small delay before removing transition state to let React render new text
+      requestAnimationFrame(() => {
+        setIsTransitioning(false);
+      });
+    }, TRANSITION_DURATION);
+  }, []);
+
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t }}>
+    <LanguageContext.Provider value={{ lang, setLang, switchLang, isTransitioning, t }}>
       {children}
     </LanguageContext.Provider>
   );

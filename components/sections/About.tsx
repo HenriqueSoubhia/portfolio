@@ -2,9 +2,12 @@
 
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { motion, useReducedMotion } from "motion/react";
+import { fadeUp, staggerContainer, defaultTransition, defaultViewport } from "@/lib/animations";
 
 export function About() {
   const { t } = useLanguage();
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <section
@@ -12,7 +15,14 @@ export function About() {
       className="relative w-full min-h-dvh flex items-center bg-transparent py-24 sm:py-32 px-6 sm:px-12 md:px-20 max-w-[1600px] mx-auto"
     >
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 sm:gap-20 w-full items-start">
-        <header className="md:col-span-5 flex flex-col items-start md:sticky md:top-40">
+        <motion.header
+          className="md:col-span-5 flex flex-col items-start md:sticky md:top-40"
+          initial={prefersReducedMotion ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={fadeUp}
+          transition={defaultTransition}
+        >
           <span className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] mb-4">
             {t.about.sectionLabel}
           </span>
@@ -20,10 +30,20 @@ export function About() {
             {t.about.title}
             <span className="block">{t.about.titleSuffix}</span>
           </h2>
-        </header>
+        </motion.header>
 
-        <div className="md:col-span-7 flex flex-col gap-12">
-          <div className="flex items-center gap-4 border-l-4 border-white pl-5 py-2">
+        <motion.div
+          className="md:col-span-7 flex flex-col gap-12"
+          variants={staggerContainer}
+          initial={prefersReducedMotion ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={defaultViewport}
+        >
+          <motion.div
+            className="flex items-center gap-4 border-l-4 border-white pl-5 py-2"
+            variants={fadeUp}
+            transition={defaultTransition}
+          >
             <span className="text-white font-bold font-heading tracking-widest uppercase text-base sm:text-lg">
               FIAP
             </span>
@@ -31,18 +51,26 @@ export function About() {
             <span className="text-white/80 font-light tracking-wider text-sm sm:text-base">
               {t.about.role}
             </span>
-          </div>
+          </motion.div>
 
-          <article className="flex flex-col gap-6">
+          <motion.article
+            className="flex flex-col gap-6"
+            variants={fadeUp}
+            transition={defaultTransition}
+          >
             <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 font-light leading-relaxed max-w-2xl">
               {t.about.bio1}
             </p>
             <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 font-light leading-relaxed max-w-2xl">
               {t.about.bio2}
             </p>
-          </article>
+          </motion.article>
 
-          <figure className="relative w-full max-w-sm aspect-3/4 overflow-hidden bg-white/5 border border-white/10 mt-4 group">
+          <motion.figure
+            className="relative w-full max-w-sm aspect-3/4 overflow-hidden bg-white/5 border border-white/10 mt-4 group"
+            variants={fadeUp}
+            transition={defaultTransition}
+          >
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white/20 transition-colors group-hover:text-white/40">
               <Image
                 src="/henrique.png"
@@ -58,8 +86,8 @@ export function About() {
             <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-white/20"></div>
             <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-white/20"></div>
             <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-white/20"></div>
-          </figure>
-        </div>
+          </motion.figure>
+        </motion.div>
       </div>
     </section>
   );

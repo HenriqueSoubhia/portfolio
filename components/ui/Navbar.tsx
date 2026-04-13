@@ -4,9 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { motion, AnimatePresence } from "motion/react";
 
 export function Navbar() {
-  const { lang, setLang, t } = useLanguage();
+  const { lang, switchLang, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
   const NAV_LINKS = [
@@ -19,11 +20,16 @@ export function Navbar() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-50 px-4 py-4 sm:px-8 md:px-16 pointer-events-none">
+      <motion.header
+        className="fixed top-0 left-0 w-full z-50 px-4 py-4 sm:px-8 md:px-16 pointer-events-none"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+      >
         <nav className="flex items-center justify-between max-w-[1600px] mx-auto pointer-events-auto">
           <Link
             href="#hero"
-            className="font-heading font-bold text-xl tracking-widest uppercase text-white hover:opacity-70 transition-opacity"
+            className="font-heading font-bold text-xl tracking-widest uppercase text-white"
             aria-label="Ir para a página inicial"
             onClick={closeMenu}
           >
@@ -34,18 +40,21 @@ export function Navbar() {
             <ul className="hidden md:flex items-center gap-8 text-xs font-semibold tracking-[0.2em] uppercase text-white/70">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="hover:text-white transition-colors">
-                    {link.label}
-                  </Link>
+                  <motion.span whileHover={{ y: -2 }} transition={{ duration: 0.2 }} className="inline-block">
+                    <Link href={link.href} className="hover:text-white transition-colors">
+                      {link.label}
+                    </Link>
+                  </motion.span>
                 </li>
               ))}
             </ul>
 
-            {/* Lang switcher */}
-            <button
-              onClick={() => setLang(lang === "pt" ? "en" : "pt")}
-              className="flex items-center gap-1.5 text-xs font-bold tracking-[0.2em] px-4 py-2 rounded-full border border-white/20 hover:border-white/60 text-white backdrop-blur-sm transition-all cursor-pointer uppercase"
+            <motion.button
+              onClick={switchLang}
+              className="flex items-center gap-1.5 text-xs font-bold tracking-[0.2em] px-4 py-2 rounded-full border border-white/20 text-white backdrop-blur-sm transition-all cursor-pointer uppercase"
               aria-label={`Alterar idioma para ${lang === "pt" ? "Inglês" : "Português"}`}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.15 }}
             >
               <span className={cn("transition-opacity", lang === "pt" ? "opacity-100" : "opacity-40")}>
                 PT
@@ -54,7 +63,7 @@ export function Navbar() {
               <span className={cn("transition-opacity", lang === "en" ? "opacity-100" : "opacity-40")}>
                 EN
               </span>
-            </button>
+            </motion.button>
 
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -64,49 +73,65 @@ export function Navbar() {
             >
               <span
                 className={cn(
-                  "block w-6 h-px bg-white transition-all duration-300 origin-center",
+                  "block w-6 h-px bg-white origin-center transition-all duration-300",
                   isOpen && "translate-y-[3.5px] rotate-45",
                 )}
               />
               <span
                 className={cn(
-                  "block w-6 h-px bg-white transition-all duration-300 origin-center",
+                  "block w-6 h-px bg-white origin-center transition-all duration-300",
                   isOpen && "-translate-y-[3.5px] -rotate-45",
                 )}
               />
             </button>
           </div>
         </nav>
-      </header>
+      </motion.header>
 
-      <div
-        className={cn(
-          "fixed inset-0 z-40 md:hidden transition-all duration-500",
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
-        )}
-      >
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-2xl" onClick={closeMenu} />
-
-        <nav className="relative z-10 flex flex-col items-start justify-end h-full px-8 pb-24 gap-6">
-          {NAV_LINKS.map((link, i) => (
-            <Link
-              key={link.href}
-              href={link.href}
+      {/* Mobile Menu with AnimatePresence */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 z-40 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div
+              className="absolute inset-0 bg-black/80 backdrop-blur-2xl"
               onClick={closeMenu}
-              className={cn(
-                "text-4xl font-experimental font-bold text-white uppercase tracking-tight transition-all duration-500",
-                isOpen ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
-              )}
-              style={{ transitionDelay: isOpen ? `${i * 80}ms` : "0ms" }}
-            >
-              <span className="text-white/30 font-mono text-sm mr-4 tracking-widest">
-                0{i + 1}.
-              </span>
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
+            />
+
+            <nav className="relative z-10 flex flex-col items-start justify-end h-full px-8 pb-24 gap-6">
+              {NAV_LINKS.map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{
+                    duration: 0.4,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: i * 0.08,
+                  }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={closeMenu}
+                    className="text-4xl font-experimental font-bold text-white uppercase"
+                  >
+                    <span className="text-white/30 font-mono text-sm mr-4">
+                      0{i + 1}.
+                    </span>
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

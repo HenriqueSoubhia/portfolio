@@ -29,7 +29,7 @@ export function LocalTime() {
   return (
     <div className="flex items-center gap-3 text-sm font-semibold tracking-widest text-white/70 uppercase mb-8">
       <span className="relative flex h-2.5 w-2.5">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+        <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
         <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
       </span>
       <span>

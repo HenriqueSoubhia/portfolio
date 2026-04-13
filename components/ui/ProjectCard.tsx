@@ -6,6 +6,8 @@ import {
   GithubLogoIcon,
 } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
+import { motion, useReducedMotion } from "motion/react";
+import { fadeUp, defaultTransition, defaultViewport } from "@/lib/animations";
 
 interface Project {
   id: string;
@@ -23,42 +25,55 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, isStaggered }: ProjectCardProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <article
+    <motion.article
       className={cn(
         "group relative flex flex-col gap-8 w-full",
         isStaggered && "md:mt-32",
       )}
+      initial={prefersReducedMotion ? "visible" : "hidden"}
+      whileInView="visible"
+      viewport={defaultViewport}
+      variants={fadeUp}
+      transition={defaultTransition}
     >
-      <figure className="relative w-full aspect-video overflow-hidden bg-white/5 border border-white/5 group-hover:border-white/20 transition-all duration-500 rounded-sm">
-        <div className="absolute inset-0 bg-[#00000030] z-10 transition-opacity group-hover:opacity-0" />
+      <figure className="relative w-full aspect-video overflow-hidden bg-white/5 border border-white/5 transition-all duration-500 rounded-sm">
+        <div className="absolute inset-0 bg-[#00000030] z-10" />
 
         <div className="absolute inset-0 flex items-center justify-center text-white/10 font-experimental text-9xl select-none">
           {project.id}
         </div>
 
-        <div className="absolute top-4 right-4 z-20 flex gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+        <div className="absolute top-4 right-4 z-20 flex gap-2">
           {project.github && (
-            <a
+            <motion.a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-black/60 backdrop-blur-xl rounded-full text-white hover:bg-white hover:text-black transition-colors"
+              className="p-3 bg-black/60 backdrop-blur-xl rounded-full text-white"
               aria-label="Ver código no Github"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.2 }}
             >
               <GithubLogoIcon size={20} />
-            </a>
+            </motion.a>
           )}
           {project.live && (
-            <a
+            <motion.a
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 bg-black/60 backdrop-blur-xl rounded-full text-white hover:bg-white hover:text-black transition-colors"
+              className="p-3 bg-black/60 backdrop-blur-xl rounded-full text-white"
               aria-label="Ver projeto ao vivo"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.2 }}
             >
               <ArrowSquareOutIcon size={20} />
-            </a>
+            </motion.a>
           )}
         </div>
       </figure>
@@ -85,6 +100,6 @@ export function ProjectCard({ project, isStaggered }: ProjectCardProps) {
           ))}
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }

@@ -6,6 +6,8 @@ import {
   ArrowUpRightIcon,
 } from "@phosphor-icons/react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { motion, useReducedMotion } from "motion/react";
+import { fadeUp, staggerContainer, defaultTransition, defaultViewport } from "@/lib/animations";
 
 const SOCIALS = [
   {
@@ -22,14 +24,21 @@ const SOCIALS = [
 
 export function Contact() {
   const { t } = useLanguage();
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <section
       id="contact"
       className="relative w-full overflow-hidden flex flex-col pt-24 sm:pt-32 px-6 sm:px-12 md:px-20 max-w-[1600px] mx-auto pb-12"
     >
-      <header className="flex flex-col gap-8 mb-20 lg:mb-32">
-        <div className="flex flex-col gap-2">
+      <motion.header
+        className="flex flex-col gap-8 mb-20 lg:mb-32"
+        initial={prefersReducedMotion ? "visible" : "hidden"}
+        whileInView="visible"
+        viewport={defaultViewport}
+        variants={staggerContainer}
+      >
+        <motion.div className="flex flex-col gap-2" variants={fadeUp} transition={defaultTransition}>
           <span className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] uppercase">
             {t.contact.sectionLabel}
           </span>
@@ -37,37 +46,48 @@ export function Contact() {
             {t.contact.title}
             <span className="block">{t.contact.titleSuffix}</span>
           </h2>
-        </div>
-      </header>
+        </motion.div>
+      </motion.header>
 
-      <div className="flex flex-col md:flex-row justify-between items-end gap-16 mb-32">
-        <div className="flex flex-col gap-6 max-w-xl">
+      <motion.div
+        className="flex flex-col md:flex-row justify-between items-end gap-16 mb-32"
+        initial={prefersReducedMotion ? "visible" : "hidden"}
+        whileInView="visible"
+        viewport={defaultViewport}
+        variants={staggerContainer}
+      >
+        <motion.div className="flex flex-col gap-6 max-w-xl" variants={fadeUp} transition={defaultTransition}>
           <p className="text-[clamp(1.25rem,3vw,1.875rem)] text-white font-light font-heading leading-tight tracking-tight">
             {t.contact.description}
           </p>
-          <a
+          <motion.a
             href="mailto:contato@henriquesoubhia.com"
-            className="group flex items-center gap-4 text-[clamp(1.75rem,5vw,3rem)] font-experimental font-bold text-white hover:opacity-70 transition-all duration-300 w-fit"
+            className="group flex items-center gap-4 text-[clamp(1.75rem,5vw,3rem)] font-experimental font-bold text-white w-fit"
+            whileHover={{ x: 8 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.25 }}
           >
             {t.contact.cta}
             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center -rotate-45 group-hover:rotate-0 transition-transform duration-500 overflow-hidden">
               <ArrowUpRightIcon className="w-6 h-6 text-black" />
             </div>
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
 
-        <div className="flex flex-col gap-4 items-end">
+        <motion.div className="flex flex-col gap-4 items-end" variants={fadeUp} transition={defaultTransition}>
           <div className="flex flex-col gap-3 items-end">
             <span className="text-white/30 font-mono text-[10px] uppercase tracking-widest mb-2">
               {t.contact.socials}
             </span>
             {SOCIALS.map((social) => (
-              <a
+              <motion.a
                 key={social.name}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-6 group hover:translate-x-2 transition-transform duration-300"
+                className="flex items-center gap-6 group transition-transform duration-300"
+                whileHover={{ x: 8 }}
+                transition={{ duration: 0.2 }}
               >
                 <span className="text-white/50 group-hover:text-white font-mono text-xs tracking-widest uppercase mt-0.5">
                   {social.name}
@@ -75,11 +95,11 @@ export function Contact() {
                 <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/50 group-hover:text-white group-hover:border-white/30 transition-colors">
                   {social.icon}
                 </div>
-              </a>
+              </motion.a>
             ))}
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

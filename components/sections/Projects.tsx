@@ -5,12 +5,15 @@ import { cn } from "@/lib/utils";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 import { PROJECTS } from "@/lib/data";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { fadeUp, staggerContainer, defaultTransition, defaultViewport } from "@/lib/animations";
 
 const ALL_TECHS_BASE = [...new Set(PROJECTS.flatMap((p) => p.techs))];
 
 export function Projects() {
   const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   const ALL_LABEL = t.projects.filterAll;
   const techs = [ALL_LABEL, ...ALL_TECHS_BASE];
@@ -25,43 +28,61 @@ export function Projects() {
       id="projects"
       className="relative w-full min-h-dvh flex flex-col py-24 sm:py-32 px-6 sm:px-12 md:px-20 container mx-auto"
     >
-      <header className="flex flex-col gap-8 mb-20 lg:mb-32">
-        <div className="flex flex-col gap-2">
+      <motion.header
+        className="flex flex-col gap-8 mb-20 lg:mb-32"
+        initial={prefersReducedMotion ? "visible" : "hidden"}
+        whileInView="visible"
+        viewport={defaultViewport}
+        variants={staggerContainer}
+      >
+        <motion.div className="flex flex-col gap-2" variants={fadeUp} transition={defaultTransition}>
           <span className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] uppercase">
             {t.projects.sectionLabel}
           </span>
           <h2 className="text-6xl sm:text-7xl md:text-8xl font-bold font-experimental text-white tracking-tighter uppercase leading-[0.9]">
             {t.projects.title}
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-wrap gap-3">
+        <motion.div className="flex flex-wrap gap-3" variants={fadeUp} transition={defaultTransition}>
           {techs.map((tech) => (
-            <button
+            <motion.button
               key={tech}
               onClick={() => setActiveFilter(tech === ALL_LABEL ? null : tech)}
               className={cn(
-                "px-5 py-2 rounded-full border text-[10px] sm:text-xs font-mono tracking-widest uppercase transition-all duration-300 cursor-pointer",
-                (tech === ALL_LABEL && activeFilter === null) || tech === activeFilter
+                "px-5 py-2 rounded-full border text-[10px] sm:text-xs font-mono tracking-widest uppercase cursor-pointer",
+                (tech === ALL_LABEL && activeFilter === null) ||
+                  tech === activeFilter
                   ? "bg-white text-black border-white"
-                  : "bg-transparent text-white/50 border-white/10 hover:border-white/30 hover:text-white"
+                  : "bg-transparent text-white/50 border-white/10",
               )}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.15 }}
             >
               {tech}
-            </button>
+            </motion.button>
           ))}
-        </div>
-      </header>
+        </motion.div>
+      </motion.header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-        {filteredProjects.map((project, index) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            isStaggered={index % 2 !== 0}
-          />
-        ))}
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeFilter ?? "all"}
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8"
+          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ ...defaultTransition, duration: 0.35 }}
+        >
+          {filteredProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              isStaggered={index % 2 !== 0}
+            />
+          ))}
+        </motion.div>
+      </AnimatePresence>
     </section>
   );
 }
