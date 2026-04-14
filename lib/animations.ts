@@ -33,3 +33,14 @@ export const defaultViewport = {
   once: true,
   amount: 0.2,
 };
+
+export const getLangTransition = (isTransitioning: boolean) => ({
+  langAnimate: {
+    opacity: isTransitioning ? 0 : 1,
+    x: isTransitioning ? 20 : 0,
+  },
+  langTransition: {
+    duration: 0.5,
+    ease: [0.22, 1, 0.36, 1] as const,
+  },
+});

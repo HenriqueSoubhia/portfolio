@@ -11,7 +11,6 @@ export const dictionary = {
       enterInContact: "Fale comigo",
     },
     hero: {
-      tagline: "フロントエンド開発者",
       title: "Desenvolvedor",
       titleHighlight: "Frontend.",
       description:
@@ -60,7 +59,6 @@ export const dictionary = {
       enterInContact: "Get in touch",
     },
     hero: {
-      tagline: "フロントエンド開発者",
       title: "Frontend",
       titleHighlight: "Developer.",
       description:

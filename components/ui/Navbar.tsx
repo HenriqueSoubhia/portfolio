@@ -5,10 +5,13 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion, AnimatePresence } from "motion/react";
+import { getLangTransition } from "@/lib/animations";
 
 export function Navbar() {
-  const { lang, switchLang, t } = useLanguage();
+  const { lang, switchLang, isTransitioning, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+
+  const { langAnimate, langTransition } = getLangTransition(isTransitioning);
 
   const NAV_LINKS = [
     { label: t.nav.about, href: "#about" },
@@ -40,9 +43,21 @@ export function Navbar() {
             <ul className="hidden md:flex items-center gap-8 text-xs font-semibold tracking-[0.2em] uppercase text-white/70">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <motion.span whileHover={{ y: -2 }} transition={{ duration: 0.2 }} className="inline-block">
-                    <Link href={link.href} className="hover:text-white transition-colors">
-                      {link.label}
+                  <motion.span
+                    whileHover={{ y: -2 }}
+                    transition={{ duration: 0.2 }}
+                    className="inline-block"
+                  >
+                    <Link
+                      href={link.href}
+                      className="hover:text-white transition-colors"
+                    >
+                      <motion.span
+                        animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
+                        transition={langTransition}
+                      >
+                        {link.label}
+                      </motion.span>
                     </Link>
                   </motion.span>
                 </li>
@@ -56,11 +71,21 @@ export function Navbar() {
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.15 }}
             >
-              <span className={cn("transition-opacity", lang === "pt" ? "opacity-100" : "opacity-40")}>
+              <span
+                className={cn(
+                  "transition-opacity",
+                  lang === "pt" ? "opacity-100" : "opacity-40",
+                )}
+              >
                 PT
               </span>
               <span className="opacity-30 font-light mix-blend-overlay">|</span>
-              <span className={cn("transition-opacity", lang === "en" ? "opacity-100" : "opacity-40")}>
+              <span
+                className={cn(
+                  "transition-opacity",
+                  lang === "en" ? "opacity-100" : "opacity-40",
+                )}
+              >
                 EN
               </span>
             </motion.button>
@@ -116,16 +141,21 @@ export function Navbar() {
                     delay: i * 0.08,
                   }}
                 >
-                  <Link
-                    href={link.href}
-                    onClick={closeMenu}
-                    className="text-4xl font-experimental font-bold text-white uppercase"
-                  >
-                    <span className="text-white/30 font-mono text-sm mr-4">
-                      0{i + 1}.
-                    </span>
-                    {link.label}
-                  </Link>
+                    <Link
+                      href={link.href}
+                      onClick={closeMenu}
+                      className="text-4xl font-experimental font-bold text-white uppercase"
+                    >
+                      <span className="text-white/30 font-mono text-sm mr-4">
+                        0{i + 1}.
+                      </span>
+                      <motion.span
+                        animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
+                        transition={langTransition}
+                      >
+                        {link.label}
+                      </motion.span>
+                    </Link>
                 </motion.div>
               ))}
             </nav>

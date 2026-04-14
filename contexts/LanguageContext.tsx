@@ -17,7 +17,7 @@ interface LanguageContextValue {
   t: Dictionary;
 }
 
-const TRANSITION_DURATION = 200; // ms for fade-out (fade-in is handled by motion)
+const TRANSITION_DURATION = 200;
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
@@ -32,7 +32,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setTimeout(() => {
       setLang((prev) => (prev === "pt" ? "en" : "pt"));
 
-      // Small delay before removing transition state to let React render new text
       requestAnimationFrame(() => {
         setIsTransitioning(false);
       });
@@ -40,7 +39,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, switchLang, isTransitioning, t }}>
+    <LanguageContext.Provider
+      value={{ lang, setLang, switchLang, isTransitioning, t }}
+    >
       {children}
     </LanguageContext.Provider>
   );

@@ -3,11 +3,19 @@
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion, useReducedMotion } from "motion/react";
-import { fadeUp, staggerContainer, defaultTransition, defaultViewport } from "@/lib/animations";
+import {
+  fadeUp,
+  staggerContainer,
+  defaultTransition,
+  defaultViewport,
+  getLangTransition,
+} from "@/lib/animations";
 
 export function About() {
-  const { t } = useLanguage();
+  const { t, isTransitioning } = useLanguage();
   const prefersReducedMotion = useReducedMotion();
+
+  const { langAnimate, langTransition } = getLangTransition(isTransitioning);
 
   return (
     <section
@@ -23,13 +31,21 @@ export function About() {
           variants={fadeUp}
           transition={defaultTransition}
         >
-          <span className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] mb-4">
+          <motion.span
+            className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] mb-4"
+            animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
+            transition={langTransition}
+          >
             {t.about.sectionLabel}
-          </span>
-          <h2 className="text-[clamp(2.3rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.9]">
+          </motion.span>
+          <motion.h2
+            className="text-[clamp(2.3rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.9]"
+            animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
+            transition={langTransition}
+          >
             {t.about.title}
             <span className="block">{t.about.titleSuffix}</span>
-          </h2>
+          </motion.h2>
         </motion.header>
 
         <motion.div
@@ -39,7 +55,7 @@ export function About() {
           whileInView="visible"
           viewport={defaultViewport}
         >
-          <motion.div
+          <motion.header
             className="flex items-center gap-4 border-l-4 border-white pl-5 py-2"
             variants={fadeUp}
             transition={defaultTransition}
@@ -48,22 +64,34 @@ export function About() {
               FIAP
             </span>
             <span className="text-white/40 font-light">—</span>
-            <span className="text-white/80 font-light tracking-wider text-sm sm:text-base">
+            <motion.span
+              className="text-white/80 font-light tracking-wider text-sm sm:text-base"
+              animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
+              transition={langTransition}
+            >
               {t.about.role}
-            </span>
-          </motion.div>
+            </motion.span>
+          </motion.header>
 
           <motion.article
             className="flex flex-col gap-6"
             variants={fadeUp}
             transition={defaultTransition}
           >
-            <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 font-light leading-relaxed max-w-2xl">
+            <motion.p
+              className="text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 font-light leading-relaxed max-w-2xl"
+              animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
+              transition={langTransition}
+            >
               {t.about.bio1}
-            </p>
-            <p className="text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 font-light leading-relaxed max-w-2xl">
+            </motion.p>
+            <motion.p
+              className="text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 font-light leading-relaxed max-w-2xl"
+              animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
+              transition={langTransition}
+            >
               {t.about.bio2}
-            </p>
+            </motion.p>
           </motion.article>
 
           <motion.figure

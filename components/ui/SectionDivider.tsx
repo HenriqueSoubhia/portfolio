@@ -1,8 +1,15 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { motion, useReducedMotion } from "motion/react";
-import { fadeIn, scaleX, defaultTransition, defaultViewport } from "@/lib/animations";
+import {
+  fadeIn,
+  scaleX,
+  defaultTransition,
+  defaultViewport,
+  getLangTransition,
+} from "@/lib/animations";
 
 interface SectionDividerProps {
   text: string;
@@ -10,7 +17,9 @@ interface SectionDividerProps {
 }
 
 export function SectionDivider({ text, side = "left" }: SectionDividerProps) {
+  const { isTransitioning } = useLanguage();
   const prefersReducedMotion = useReducedMotion();
+  const { langAnimate, langTransition } = getLangTransition(isTransitioning);
 
   return (
     <div className="w-full relative py-20 sm:py-32 flex items-center">
@@ -42,7 +51,13 @@ export function SectionDivider({ text, side = "left" }: SectionDividerProps) {
             className="w-1.5 h-1.5 rounded-full bg-white/40 animate-pulse shrink-0"
             aria-hidden="true"
           />
-          <span className="leading-none mt-px">{text}</span>
+          <motion.span
+            className="leading-none mt-px"
+            animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
+            transition={langTransition}
+          >
+            {text}
+          </motion.span>
         </motion.div>
       </div>
     </div>

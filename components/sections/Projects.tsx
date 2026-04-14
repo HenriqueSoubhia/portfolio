@@ -6,14 +6,21 @@ import { ProjectCard } from "@/components/ui/ProjectCard";
 import { PROJECTS } from "@/lib/data";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
-import { fadeUp, staggerContainer, defaultTransition, defaultViewport } from "@/lib/animations";
+import {
+  fadeUp,
+  staggerContainer,
+  defaultTransition,
+  defaultViewport,
+  getLangTransition,
+} from "@/lib/animations";
 
 const ALL_TECHS_BASE = [...new Set(PROJECTS.flatMap((p) => p.techs))];
 
 export function Projects() {
-  const { t } = useLanguage();
+  const { t, isTransitioning } = useLanguage();
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const prefersReducedMotion = useReducedMotion();
+  const { langAnimate, langTransition } = getLangTransition(isTransitioning);
 
   const ALL_LABEL = t.projects.filterAll;
   const techs = [ALL_LABEL, ...ALL_TECHS_BASE];
@@ -34,8 +41,14 @@ export function Projects() {
         whileInView="visible"
         viewport={defaultViewport}
         variants={staggerContainer}
+        animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
+        transition={langTransition}
       >
-        <motion.div className="flex flex-col gap-2" variants={fadeUp} transition={defaultTransition}>
+        <motion.div
+          className="flex flex-col gap-2"
+          variants={fadeUp}
+          transition={defaultTransition}
+        >
           <span className="text-white/40 font-mono text-xs sm:text-sm tracking-[0.2em] uppercase">
             {t.projects.sectionLabel}
           </span>
@@ -44,7 +57,11 @@ export function Projects() {
           </h2>
         </motion.div>
 
-        <motion.div className="flex flex-wrap gap-3" variants={fadeUp} transition={defaultTransition}>
+        <motion.div
+          className="flex flex-wrap gap-3"
+          variants={fadeUp}
+          transition={defaultTransition}
+        >
           {techs.map((tech) => (
             <motion.button
               key={tech}
@@ -69,7 +86,9 @@ export function Projects() {
         <motion.div
           key={activeFilter ?? "all"}
           className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8"
-          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+          initial={
+            prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }
+          }
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ ...defaultTransition, duration: 0.35 }}

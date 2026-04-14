@@ -4,7 +4,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { Navbar } from "@/components/ui/Navbar";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import { LanguageTransition } from "@/components/ui/LanguageTransition";
 
 const themeScript = `
   (function() {
@@ -68,9 +67,7 @@ export default function RootLayout({
         <ThemeProvider />
         <LanguageProvider>
           <Navbar />
-          <LanguageTransition>
-            {children}
-          </LanguageTransition>
+          {children}
         </LanguageProvider>
       </body>
     </html>
