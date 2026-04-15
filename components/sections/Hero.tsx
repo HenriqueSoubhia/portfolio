@@ -1,7 +1,7 @@
 "use client";
 
 import { LocalTime } from "@/components/ui/LocalTime";
-import { ArrowDownRightIcon, SparkleIcon } from "@phosphor-icons/react";
+import { ArrowDownRightIcon } from "@phosphor-icons/react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion, useReducedMotion } from "motion/react";
 import {

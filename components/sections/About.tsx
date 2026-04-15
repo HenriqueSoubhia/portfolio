@@ -54,6 +54,8 @@ export function About() {
           initial={prefersReducedMotion ? "visible" : "hidden"}
           whileInView="visible"
           viewport={defaultViewport}
+          animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
+          transition={langTransition}
         >
           <motion.header
             className="flex items-center gap-4 border-l-4 border-white pl-5 py-2"
@@ -66,8 +68,6 @@ export function About() {
             <span className="text-white/40 font-light">—</span>
             <motion.span
               className="text-white/80 font-light tracking-wider text-sm sm:text-base"
-              animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
-              transition={langTransition}
             >
               {t.about.role}
             </motion.span>
@@ -80,15 +80,11 @@ export function About() {
           >
             <motion.p
               className="text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 font-light leading-relaxed max-w-2xl"
-              animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
-              transition={langTransition}
             >
               {t.about.bio1}
             </motion.p>
             <motion.p
               className="text-[clamp(1rem,2.5vw,1.25rem)] text-white/80 font-light leading-relaxed max-w-2xl"
-              animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
-              transition={langTransition}
             >
               {t.about.bio2}
             </motion.p>
