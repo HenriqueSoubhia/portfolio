@@ -14,7 +14,7 @@ export const PROJECTS: Project[] = [
     title: "Eco Sync",
     category: "Fullstack Platform",
     techs: ["Next.js", "TypeScript", "Tailwind"],
-    github: "https://github.com",
+    github: "https://github.com/HenriqueSoubhia",
     live: "https://google.com",
     image: "/project-placeholder.jpg",
   },
@@ -23,7 +23,7 @@ export const PROJECTS: Project[] = [
     title: "Nova Dashboard",
     category: "UI System",
     techs: ["React", "Node.js", "Framer"],
-    github: "https://github.com",
+    github: "https://github.com/HenriqueSoubhia",
     image: "/project-placeholder.jpg",
   },
   {
@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
     title: "Zenith Store",
     category: "E-commerce",
     techs: ["Next.js", "Sanity", "Tailwind"],
-    github: "https://github.com",
+    github: "https://github.com/HenriqueSoubhia",
     image: "/project-placeholder.jpg",
   },
 ];

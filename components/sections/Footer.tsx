@@ -37,7 +37,15 @@ export function Footer() {
             animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
             transition={langTransition}
           >
-            {t.footer.credit}
+            DESIGNED & DEVELOPED BY{" "}
+            <a
+              href="https://github.com/HenriqueSoubhia/portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white/50 transition-colors underline underline-offset-2"
+            >
+              HENRIQUE SOUBHIA
+            </a>
           </motion.p>
         </section>
 

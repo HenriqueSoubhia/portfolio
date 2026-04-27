@@ -10,5 +10,4 @@
 
 - repo do portfolio
 - verificar codigo
-- Animações - Framer Motion - transicao de idioma - OK
 - README

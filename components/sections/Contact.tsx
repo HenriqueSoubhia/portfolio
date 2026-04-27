@@ -18,12 +18,12 @@ import {
 const SOCIALS = [
   {
     name: "LinkedIn",
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/henriquesoubhia/",
     icon: <LinkedinLogoIcon className="w-4 h-4" />,
   },
   {
     name: "GitHub",
-    href: "https://github.com",
+    href: "https://github.com/HenriqueSoubhia",
     icon: <GithubLogoIcon className="w-4 h-4" />,
   },
 ];
@@ -83,7 +83,7 @@ export function Contact() {
           </motion.p>
 
           <motion.a
-            href="mailto:contato@henriquesoubhia.com"
+            href="mailto:soubhiahenrique0@gmail.com"
             className="group flex items-center gap-4 text-[clamp(1.75rem,5vw,3rem)] font-experimental font-bold text-white w-fit"
             whileHover={{ x: 8 }}
             whileTap={{ scale: 0.97 }}
