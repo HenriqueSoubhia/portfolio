@@ -6,6 +6,7 @@ import {
   defaultViewport,
   getLangTransition,
 } from "@/lib/animations";
+import { useMounted } from "@/hooks/useMounted";
 
 export function Footer() {
   const { t, isTransitioning } = useLanguage();
@@ -13,6 +14,12 @@ export function Footer() {
   const prefersReducedMotion = useReducedMotion();
 
   const { langAnimate, langTransition } = getLangTransition(isTransitioning);
+
+  const mounted = useMounted();
+
+  if (!mounted) {
+    return <div className="min-h-screen" />; 
+  }
 
   return (
     <footer className="w-full py-12 px-6 sm:px-12 md:px-20 max-w-[1600px] mx-auto">

@@ -13,6 +13,7 @@ import {
   defaultViewport,
   getLangTransition,
 } from "@/lib/animations";
+import { useMounted } from "@/hooks/useMounted";
 
 const ALL_TECHS_BASE = [...new Set(PROJECTS.flatMap((p) => p.techs))];
 
@@ -30,6 +31,12 @@ export function Projects() {
       ? PROJECTS
       : PROJECTS.filter((p) => p.techs.includes(activeFilter));
 
+  const mounted = useMounted();
+
+  if (!mounted) {
+    return <div className="min-h-screen" />; 
+  }
+    
   return (
     <section
       id="projects"

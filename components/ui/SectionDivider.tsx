@@ -10,6 +10,7 @@ import {
   defaultViewport,
   getLangTransition,
 } from "@/lib/animations";
+import { useMounted } from "@/hooks/useMounted";
 
 interface SectionDividerProps {
   text: string;
@@ -20,6 +21,12 @@ export function SectionDivider({ text, side = "left" }: SectionDividerProps) {
   const { isTransitioning } = useLanguage();
   const prefersReducedMotion = useReducedMotion();
   const { langAnimate, langTransition } = getLangTransition(isTransitioning);
+
+    const mounted = useMounted();
+  
+    if (!mounted) {
+      return null; 
+    }
 
   return (
     <div className="w-full relative py-20 sm:py-32 flex items-center">

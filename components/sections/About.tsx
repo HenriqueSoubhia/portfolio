@@ -10,12 +10,19 @@ import {
   defaultViewport,
   getLangTransition,
 } from "@/lib/animations";
+import { useMounted } from "@/hooks/useMounted";
 
 export function About() {
   const { t, isTransitioning } = useLanguage();
   const prefersReducedMotion = useReducedMotion();
 
   const { langAnimate, langTransition } = getLangTransition(isTransitioning);
+
+  const mounted = useMounted();
+
+  if (!mounted) {
+    return <div className="min-h-screen" />; 
+  }
 
   return (
     <section
@@ -39,7 +46,7 @@ export function About() {
             {t.about.sectionLabel}
           </motion.span>
           <motion.h2
-            className="text-[clamp(2.3rem,10vw,8rem)] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.9]"
+            className="text-[clamp(2.3rem,9.4vw,8rem)] font-bold font-experimental text-white tracking-tighter uppercase leading-[0.9]"
             animate={isTransitioning ? langAnimate : { opacity: 1, x: 0 }}
             transition={langTransition}
           >

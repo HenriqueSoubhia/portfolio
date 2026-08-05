@@ -14,6 +14,7 @@ import {
   defaultViewport,
   getLangTransition,
 } from "@/lib/animations";
+import { useMounted } from "@/hooks/useMounted";
 
 const SOCIALS = [
   {
@@ -33,6 +34,12 @@ export function Contact() {
   const prefersReducedMotion = useReducedMotion();
 
   const { langAnimate, langTransition } = getLangTransition(isTransitioning);
+
+  const mounted = useMounted();
+
+  if (!mounted) {
+    return <div className="min-h-screen" />; 
+  }
 
   return (
     <section

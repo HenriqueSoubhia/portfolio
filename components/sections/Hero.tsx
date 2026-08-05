@@ -10,12 +10,19 @@ import {
   defaultTransition,
   getLangTransition,
 } from "@/lib/animations";
+import { useMounted } from "@/hooks/useMounted";
 
 export function Hero() {
   const { t, isTransitioning } = useLanguage();
   const prefersReducedMotion = useReducedMotion();
 
   const { langAnimate, langTransition } = getLangTransition(isTransitioning);
+
+  const mounted = useMounted();
+
+  if (!mounted) {
+    return <div className="min-h-screen" />; 
+  }
 
   return (
     <section
