@@ -12,7 +12,7 @@ export const dictionary = {
     },
     hero: {
       title: "Desenvolvedor",
-      titleHighlight: "Frontend.",
+      titleHighlight: "FullStack.",
       description:
         "Focado em solucionar problemas. Transformando ideias em interfaces que fazem sentido para o usuário.",
       scroll: "Scroll",
@@ -59,7 +59,7 @@ export const dictionary = {
       enterInContact: "Get in touch",
     },
     hero: {
-      title: "Frontend",
+      title: "FullStack",
       titleHighlight: "Developer.",
       description:
         "Focused on solving problems. Turning ideas into interfaces that make sense for the user.",
